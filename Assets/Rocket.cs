@@ -48,10 +48,10 @@ public class Rocket : MonoBehaviour
                 // do nothing
                 break;
             case "Finish":
-                StartSuccessSequence();
+                //();
                 break;
             default:
-                StartDeathSequence();
+                //StartDeathSequence();
                 break;
         }
     }
