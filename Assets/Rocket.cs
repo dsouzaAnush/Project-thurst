@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Rocket : MonoBehaviour
 {
@@ -86,7 +87,7 @@ public class Rocket : MonoBehaviour
 
     private void RespondToThrustInput()
     {
-        if (Input.GetKey(KeyCode.Space)) // can thrust while rotating
+        if (CrossPlatformInputManager.GetButtonDown("Jump"))// can thrust while rotating
         {
             ApplyThrust();
         }
@@ -112,14 +113,15 @@ public class Rocket : MonoBehaviour
         rigidBody.freezeRotation = true; // take manual control of rotation
        
         float rotationThisFrame = rcsThrust * Time.deltaTime;
-        if (Input.GetKey(KeyCode.A))
+       /* if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(Vector3.forward * rotationThisFrame);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             transform.Rotate(-Vector3.forward * rotationThisFrame);
-        }
+        }*/
+transform.Rotate(CrossPlatformInputManager.GetAxis("Horizontal")*Vector3.forward * rotationThisFrame);
 
         rigidBody.freezeRotation = false; // resume physics control of rotation
     }
