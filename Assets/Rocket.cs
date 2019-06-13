@@ -17,6 +17,7 @@ public class Rocket : MonoBehaviour
 
     Rigidbody rigidBody;
     AudioSource audioSource;
+    FuelSystem fuelSystem;
 
     enum State { Alive, Dying, Transcending }
     State state = State.Alive;
@@ -26,6 +27,8 @@ public class Rocket : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+        fuelSystem = GetComponent<FuelSystem>();
+
 	}
 	
 	// Update is called once per frame
@@ -40,7 +43,7 @@ public class Rocket : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Alive) { return; } // ignore collisions when dead
+        if (state != State.Alive || fuelSystem.startFuel <= 0) { return; } // ignore collisions when dead
 
         switch (collision.gameObject.tag)
         {
@@ -94,17 +97,22 @@ public class Rocket : MonoBehaviour
         {
             audioSource.Stop();
             mainEngineParticles.Stop();
+           // fuelSystem.fuelConsumptionRate = 0.2f;
+            fuelSystem.ReduceFuel();
         }
     }
 
     private void ApplyThrust()
     {
         rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+        //fuelSystem.fuelConsumptionRate = 0.5f;
+        
         if (!audioSource.isPlaying) // so it doesn't layer
         {
             audioSource.PlayOneShot(mainEngine);
         }
         mainEngineParticles.Play();
+        fuelSystem.ReduceFuel();
     }
 
     private void RespondToRotateInput()
@@ -115,10 +123,14 @@ public class Rocket : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(Vector3.forward * rotationThisFrame);
+            //fuelSystem.fuelConsumptionRate = 0.2f;
+            fuelSystem.ReduceFuel();
         }
         else if (Input.GetKey(KeyCode.D))
         {
             transform.Rotate(-Vector3.forward * rotationThisFrame);
+           // fuelSystem.fuelConsumptionRate = 0.2f;
+            fuelSystem.ReduceFuel();
         }
 
         rigidBody.freezeRotation = false; // resume physics control of rotation
