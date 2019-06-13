@@ -34,16 +34,21 @@ public class Rocket : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (state == State.Alive)
+        if (state == State.Alive || fuelSystem.startFuel > 0)
         {
             RespondToThrustInput();
             RespondToRotateInput();
         }
+        if(fuelSystem.startFuel == 0)
+        {
+            StartDeathSequence();
+        }
+
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Alive || fuelSystem.startFuel <= 0) { return; } // ignore collisions when dead
+        if (state != State.Alive) { return; } // ignore collisions when dead
 
         switch (collision.gameObject.tag)
         {
@@ -51,10 +56,10 @@ public class Rocket : MonoBehaviour
                 // do nothing
                 break;
             case "Finish":
-                //();
+                StartSuccessSequence();
                 break;
             default:
-                //StartDeathSequence();
+                StartDeathSequence();
                 break;
         }
     }
@@ -92,13 +97,14 @@ public class Rocket : MonoBehaviour
         if (Input.GetKey(KeyCode.Space)) // can thrust while rotating
         {
             ApplyThrust();
+            fuelSystem.ReduceFuel();
         }
         else
         {
             audioSource.Stop();
             mainEngineParticles.Stop();
            // fuelSystem.fuelConsumptionRate = 0.2f;
-            fuelSystem.ReduceFuel();
+            
         }
     }
 
@@ -112,7 +118,7 @@ public class Rocket : MonoBehaviour
             audioSource.PlayOneShot(mainEngine);
         }
         mainEngineParticles.Play();
-        fuelSystem.ReduceFuel();
+
     }
 
     private void RespondToRotateInput()
