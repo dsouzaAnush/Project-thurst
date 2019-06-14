@@ -34,14 +34,16 @@ public class Rocket : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (state == State.Alive || fuelSystem.startFuel > 0)
+        if (state == State.Alive && fuelSystem.startFuel > 0)
         {
             RespondToThrustInput();
             RespondToRotateInput();
         }
-        if(fuelSystem.startFuel == 0)
+
+        if(fuelSystem.startFuel <= 0)
         {
             StartDeathSequence();
+            return;
         }
 
     }
@@ -75,6 +77,7 @@ public class Rocket : MonoBehaviour
 
     private void StartDeathSequence()
     {
+
         state = State.Dying;
         audioSource.Stop();
         audioSource.PlayOneShot(death);
@@ -94,24 +97,24 @@ public class Rocket : MonoBehaviour
 
     private void RespondToThrustInput()
     {
-        if (Input.GetKey(KeyCode.Space)) // can thrust while rotating
+        if (Input.GetKey(KeyCode.Space) && fuelSystem.startFuel > 0) // can thrust while rotating
         {
-            ApplyThrust();
+            fuelSystem.fuelConsumptionRate = 8f;
             fuelSystem.ReduceFuel();
+            ApplyThrust();
         }
         else
         {
             audioSource.Stop();
             mainEngineParticles.Stop();
-           // fuelSystem.fuelConsumptionRate = 0.2f;
-            
+           // fuelSystem.fuelConsumptionRate = 2f;
         }
     }
 
     private void ApplyThrust()
     {
         rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
-        //fuelSystem.fuelConsumptionRate = 0.5f;
+
         
         if (!audioSource.isPlaying) // so it doesn't layer
         {
