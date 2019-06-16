@@ -104,7 +104,7 @@ public class Rocket : MonoBehaviour
 
     private void RespondToThrustInput()
     {
-        if (CrossPlatformInputManager.GetButton("Jump")  && fuelSystem.startFuel > 0) // can thrust while rotating
+        if (CrossPlatformInputManager.GetButton("Jump")) // can thrust while rotating
         {
             fuelSystem.fuelConsumptionRate = 8f;
             fuelSystem.ReduceFuel();
@@ -137,21 +137,20 @@ public class Rocket : MonoBehaviour
        
         float rotationThisFrame = rcsThrust * Time.deltaTime;
 
-       /* if (Input.GetKey(KeyCode.A))
+        if (CrossPlatformInputManager.GetButton("Left"))
         {
             transform.Rotate(Vector3.forward * rotationThisFrame);
             //fuelSystem.fuelConsumptionRate = 0.2f;
             fuelSystem.ReduceFuel();
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (CrossPlatformInputManager.GetButton("Right"))
         {
             transform.Rotate(-Vector3.forward * rotationThisFrame);
            // fuelSystem.fuelConsumptionRate = 0.2f;
             fuelSystem.ReduceFuel();
-        }*/
-        transform.Rotate(CrossPlatformInputManager.GetAxis("Horizontal") * Vector3.forward * rotationThisFrame);
-        //fuelSystem.ReduceFuel();
-        fuelSystem.ReduceFuel();
+        }
+        //transform.Rotate(CrossPlatformInputManager.GetAxis("Horizontal") * Vector3.forward * rotationThisFrame);
+        //fuelSystem.ReduceFuel()
 
         rigidBody.freezeRotation = false; // resume physics control of rotation
     }
