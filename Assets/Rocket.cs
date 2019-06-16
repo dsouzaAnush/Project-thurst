@@ -87,7 +87,7 @@ public class Rocket : MonoBehaviour
 
     private void RespondToThrustInput()
     {
-        if (CrossPlatformInputManager.GetButtonDown("Jump"))// can thrust while rotating
+        if (CrossPlatformInputManager.GetButton("Jump"))// can thrust while rotating
         {
             ApplyThrust();
         }
