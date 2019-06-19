@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Rocket : MonoBehaviour
 {
@@ -80,8 +81,14 @@ public class Rocket : MonoBehaviour
 
         state = State.Dying;
         audioSource.Stop();
-        audioSource.PlayOneShot(death);
-        deathParticles.Play();
+        if (fuelSystem.startFuel <= 0)
+            deathParticles.Play();
+        else
+        {
+            audioSource.PlayOneShot(death);
+            deathParticles.Play();
+        }
+        
         Invoke("LoadFirstLevel", levelLoadDelay);
     }
 
@@ -92,12 +99,15 @@ public class Rocket : MonoBehaviour
 
     private void LoadFirstLevel()
     {
-        SceneManager.LoadScene(0);
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextIndex = currentIndex + 1;
+        SceneManager.LoadScene(nextIndex);
+
     }
 
     private void RespondToThrustInput()
     {
-        if (Input.GetKey(KeyCode.Space) && fuelSystem.startFuel > 0) // can thrust while rotating
+        if (CrossPlatformInputManager.GetButton("Jump")) // can thrust while rotating
         {
             fuelSystem.fuelConsumptionRate = 8f;
             fuelSystem.ReduceFuel();
@@ -129,18 +139,21 @@ public class Rocket : MonoBehaviour
         rigidBody.freezeRotation = true; // take manual control of rotation
        
         float rotationThisFrame = rcsThrust * Time.deltaTime;
-        if (Input.GetKey(KeyCode.A))
+
+        if (CrossPlatformInputManager.GetButton("Left"))
         {
             transform.Rotate(Vector3.forward * rotationThisFrame);
             //fuelSystem.fuelConsumptionRate = 0.2f;
             fuelSystem.ReduceFuel();
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (CrossPlatformInputManager.GetButton("Right"))
         {
             transform.Rotate(-Vector3.forward * rotationThisFrame);
            // fuelSystem.fuelConsumptionRate = 0.2f;
             fuelSystem.ReduceFuel();
         }
+        //transform.Rotate(CrossPlatformInputManager.GetAxis("Horizontal") * Vector3.forward * rotationThisFrame);
+        //fuelSystem.ReduceFuel()
 
         rigidBody.freezeRotation = false; // resume physics control of rotation
     }
