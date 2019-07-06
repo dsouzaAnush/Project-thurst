@@ -22,32 +22,39 @@ public class Rocket : MonoBehaviour
 
     enum State { Alive, Dying, Transcending }
     State state = State.Alive;
+    int levelpass;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
         audSource = GetComponent<AudioSource>();
         fuelSystem = GetComponent<FuelSystem>();
+        if (PlayerPrefs.HasKey("LevelPassed"))
+        {
 
-	}
-	
-	// Update is called once per frame
-	void Update ()
+        }
+        else
+        {
+            PlayerPrefs.SetInt("LevelPassed", 0);
+        }
+        levelpass = PlayerPrefs.GetInt("LevelPassed");
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-        if (state == State.Alive || fuelSystem.startFuel > 0)
+        if (state == State.Alive && fuelSystem.startFuel > 0)
         {
             RespondToThrust();
             RespondToRotate();
         }
 
-       
-
-        //if (fuelSystem.startFuel <= 0)
-        //{
-        //   DeathSequence();
-        //    return;
-        //}
+        if (fuelSystem.startFuel <= 0)
+        {
+            DeathSequence();
+            return;
+        }
 
     }
 
@@ -90,38 +97,42 @@ public class Rocket : MonoBehaviour
             audSource.PlayOneShot(death);
             deathParticles.Play();
         }
-        
+
         Invoke("SameLevel", levelLoadDelay);
     }
 
     private void NextLevel()
     {
         int curIndex = SceneManager.GetActiveScene().buildIndex;
+        if (levelpass < curIndex)
+            PlayerPrefs.SetInt("LevelPassed", curIndex);
+        if (curIndex == 4)
+            SceneManager.LoadScene("menu");
         int nextIndex = curIndex + 1;
         SceneManager.LoadScene(nextIndex);
-      
+
     }
 
     private void FirstLevel()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
 
     }
     private void SameLevel()
     {
         int curIndex = SceneManager.GetActiveScene().buildIndex;
-       
+
         SceneManager.LoadScene(curIndex);
 
     }
 
     private void RespondToThrust()
     {
-        if (! CrossPlatformInputManager.GetButton("Jump")) // can thrust while rotating
+        if (!CrossPlatformInputManager.GetButton("Jump")) // can thrust while rotating
         {
             audSource.Stop();
             mainEngineParticles.Stop();
-           
+
         }
         else
         {
@@ -129,7 +140,7 @@ public class Rocket : MonoBehaviour
             fuelSystem.ReduceFuel();
             ApplyThrust();
 
-           
+
         }
     }
 
@@ -137,7 +148,7 @@ public class Rocket : MonoBehaviour
     {
         rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
 
-        
+
         if (!audSource.isPlaying) // so it doesn't layer
         {
             audSource.PlayOneShot(mainEngine);
@@ -149,23 +160,23 @@ public class Rocket : MonoBehaviour
     private void RespondToRotate()
     {
         rigidBody.freezeRotation = true;
-       
-        
+
+
 
         if (CrossPlatformInputManager.GetButton("Right"))
         {
             transform.Rotate(-Vector3.forward * rcsThrust * Time.deltaTime);
-            
+
             fuelSystem.ReduceFuel();
         }
         else if (CrossPlatformInputManager.GetButton("Left"))
         {
             transform.Rotate(Vector3.forward * rcsThrust * Time.deltaTime);
-          
+
             fuelSystem.ReduceFuel();
         }
-       
 
-        rigidBody.freezeRotation = false; 
+
+        rigidBody.freezeRotation = false;
     }
 }
