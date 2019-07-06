@@ -35,17 +35,19 @@ public class Rocket : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (state == State.Alive && fuelSystem.startFuel > 0)
+        if (state == State.Alive || fuelSystem.startFuel > 0)
         {
             RespondToThrust();
             RespondToRotate();
         }
 
-        if(fuelSystem.startFuel <= 0)
-        {
-           DeathSequence();
-            return;
-        }
+       
+
+        //if (fuelSystem.startFuel <= 0)
+        //{
+        //   DeathSequence();
+        //    return;
+        //}
 
     }
 
