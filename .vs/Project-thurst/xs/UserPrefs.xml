@@ -1,18 +1,20 @@
-﻿<Properties StartupConfiguration="{0BAB0E91-A941-4E0B-C2EC-EC7B2128BEE8}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Oscillator.cs">
+﻿<Properties StartupConfiguration="{29D9D45E-1A00-3EFC-568A-DFDE5FB1A376}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/VLights/Shaders/Light/Legacy/VolumeLight.shader">
     <Files>
-      <File FileName="Assets/Rocket.cs" Line="1" Column="1" />
+      <File FileName="Assets/Rocket.cs" Line="182" Column="2" />
       <File FileName="Assets/CameraFollow.cs" Line="1" Column="1" />
       <File FileName="Assets/AddFuel.cs" Line="13" Column="5" />
       <File FileName="Assets/Oscillator.cs" Line="1" Column="1" />
       <File FileName="Assets/FuelSystem.cs" Line="48" Column="14" />
+      <File FileName="Assets/LookAtCamera.js" Line="1" Column="1" />
+      <File FileName="Assets/VLights/Shaders/Light/Legacy/VolumeLight.shader" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Project-thurst" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Oscillator.cs" selected="True" />
+              <Node name="Rocket.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -27,6 +29,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.Project-thurst PreferredExecutionTarget="Unity.Editor" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
