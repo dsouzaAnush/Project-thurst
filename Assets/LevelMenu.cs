@@ -25,7 +25,9 @@ public class LevelMenu : MonoBehaviour {
 		}
 	}
 
-
+public void goBack(){
+	SceneManager.LoadScene("menu");
+}
 public void levelToLoad (int level) {
 	SceneManager.LoadScene(level);
 
