@@ -19,6 +19,7 @@ public class Rocket : MonoBehaviour
     Rigidbody rigidBody;
     AudioSource audSource;
     FuelSystem fuelSystem;
+    public GameObject pausePanel;
 
     enum State { Alive, Dying, Transcending }
     State state = State.Alive;
@@ -106,10 +107,12 @@ public class Rocket : MonoBehaviour
         int curIndex = SceneManager.GetActiveScene().buildIndex;
         if (levelpass < curIndex)
             PlayerPrefs.SetInt("LevelPassed", curIndex);
-        if (curIndex == 4)
-            SceneManager.LoadScene("menu");
+      //  if (curIndex == 4)
+      //      SceneManager.LoadScene("menu");
         int nextIndex = curIndex + 1;
-        SceneManager.LoadScene(nextIndex);
+        //pausePanel.SetActive(true);
+
+       SceneManager.LoadScene("Levels");
 
     }
 
@@ -121,8 +124,8 @@ public class Rocket : MonoBehaviour
     private void SameLevel()
     {
         int curIndex = SceneManager.GetActiveScene().buildIndex;
-
-        SceneManager.LoadScene(curIndex);
+        //pausePanel.SetActive(true);
+       SceneManager.LoadScene(curIndex);
 
     }
 
@@ -136,9 +139,10 @@ public class Rocket : MonoBehaviour
         }
         else
         {
-            fuelSystem.fuelConsumptionRate = 8f;
+           fuelSystem.fuelConsumptionRate = 8f;
             fuelSystem.ReduceFuel();
             ApplyThrust();
+
 
 
         }
@@ -156,6 +160,8 @@ public class Rocket : MonoBehaviour
         mainEngineParticles.Play();
 
     }
+
+
 
     private void RespondToRotate()
     {
