@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0, g: 0.9705882, b: 0.8683307, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.5
+  m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 0.5
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 700914714}
-  m_IndirectSpecularColor: {r: 0.3243755, g: 0.36144626, b: 0.41494316, a: 0.5}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -775,6 +775,11 @@ Prefab:
     - target: {fileID: 1873933977368190, guid: 17ce8278a6e5b4ab09efa75ac2b34610, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108794303149399364, guid: 17ce8278a6e5b4ab09efa75ac2b34610,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17ce8278a6e5b4ab09efa75ac2b34610, type: 2}
@@ -4524,6 +4529,72 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b50165df3e0f64bd38ace19f08d56c9d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2129574854 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1767250335113452, guid: b50165df3e0f64bd38ace19f08d56c9d,
+    type: 2}
+  m_PrefabInternal: {fileID: 2129574853}
+--- !u!114 &2129574855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2129574854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 315cc901cafd14c4887450a160c2ec3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _useHighPrecisionFrameBuffer: 0
+  minInterleavedRes: 128
+  useInterleavedSampling: 1
+  ditherOffset: 0.02
+  blurRadius: 1.5
+  blurIterations: 1
+  downSample: 4
+  postEffectShader: {fileID: 4800000, guid: 591bcfb596f3c0b45877be2dae7d5425, type: 3}
+  volumeLightShader: {fileID: 4800000, guid: aface9889da643e4e9c581d463a53cd0, type: 3}
+  _useBilateralFiltering: 0
+  _downScaleDepthShader: {fileID: 4800000, guid: 0d3008434efc14e968d55bd7784df9e2,
+    type: 3}
+  _depthThreshold: 0.01
+  _blurDepth: 100
+--- !u!20 &2129574856
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2129574854}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1001 &2135035793
 Prefab:
   m_ObjectHideFlags: 0
