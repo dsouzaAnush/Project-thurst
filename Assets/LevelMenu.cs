@@ -30,8 +30,5 @@ public void levelToLoad (int level) {
 	SceneManager.LoadScene(level);
 
 	}
-public void back(){
-	SceneManager.LoadScene("menu");
-}
 
 }
