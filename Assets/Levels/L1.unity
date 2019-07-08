@@ -2547,7 +2547,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2113188558}
   m_FillRect: {fileID: 816521026}
   m_HandleRect: {fileID: 2113188557}
@@ -3155,7 +3155,7 @@ RectTransform:
   m_GameObject: {fileID: 1640225436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2344067, y: 1, z: 1}
   m_Children:
   - {fileID: 816521026}
   m_Father: {fileID: 1249008131}
@@ -4448,7 +4448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2113188557
 RectTransform:
   m_ObjectHideFlags: 0
