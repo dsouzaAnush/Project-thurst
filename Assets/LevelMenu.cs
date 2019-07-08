@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class LevelMenu : MonoBehaviour {
 
-	public Button level02Button,level03Button;
+	public Button level02Button,level03Button,level04Button;
 	int levelPassed;
 	// Use this for initialization
 	void Start () {
 		levelPassed=PlayerPrefs.GetInt("LevelPassed");
 		level02Button.interactable=false;
 		level03Button.interactable=false;
+		level04Button.interactable=false;
 
 		switch (levelPassed) {
 			case 2:
@@ -21,6 +22,11 @@ public class LevelMenu : MonoBehaviour {
 			case 3:
 			level02Button.interactable=true;
 			level03Button.interactable=true;
+			break;
+			case 4:
+			level02Button.interactable=true;
+			level03Button.interactable=true;
+			level04Button.interactable=true;
 			break;
 		}
 	}
