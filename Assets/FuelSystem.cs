@@ -40,7 +40,7 @@ public class FuelSystem : MonoBehaviour
     {
         if (other.gameObject.CompareTag("GasCan"))
         {
-            startFuel += 15f;
+            startFuel = 100f;
             ///cap the fuel
             if (startFuel > maxFuel)
             {
