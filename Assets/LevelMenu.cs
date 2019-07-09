@@ -37,4 +37,10 @@ public void levelToLoad (int level) {
 
 	}
 
+public void back()
+    {
+
+        SceneManager.LoadScene("menu");
+    }
+
 }
