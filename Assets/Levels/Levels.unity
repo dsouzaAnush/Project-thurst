@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -710,6 +710,8 @@ GameObject:
   - component: {fileID: 918273622}
   - component: {fileID: 918273621}
   - component: {fileID: 918273620}
+  - component: {fileID: 918273625}
+  - component: {fileID: 918273624}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -800,6 +802,126 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &918273624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 918273619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb228a9b9e4336419f73e021b2196fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bpm: 150
+  beatsPerMeasure: 4
+  Player: {fileID: 0}
+  Soft_exploration: {fileID: 0}
+  Loud_exploration: {fileID: 0}
+  Battle_start_immediately: {fileID: 0}
+  Play_battle1: {fileID: 0}
+  Play_battle2: {fileID: 0}
+  Play_battle3: {fileID: 0}
+  Play_battle_final: {fileID: 0}
+  intro: 0
+  exploration_soft: 0
+  exploration_loud: 0
+  battle_start: 0
+  battle1: 0
+  battle2: 0
+  battle3: 0
+  battle_final: 0
+  melody: 0
+  battle_start_initial: 0
+  pause_and_reset: 0
+  soft_exploration_distance: 5000
+  loud_exploration_distance: 5000
+  battle_initial_distance: 5000
+  battle1_distance: 5000
+  battle2_distance: 5000
+  battle3_distance: 5000
+  battle_final_distance: 5000
+  trigger_sensitivity: 0
+--- !u!82 &918273625
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 918273619}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 87a4398f4fefb4bea9caeadce634342a, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1069646987
 GameObject:
   m_ObjectHideFlags: 0
