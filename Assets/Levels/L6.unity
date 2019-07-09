@@ -509,8 +509,8 @@ MonoBehaviour:
   smoothSpeed: 0.125
   offset: {x: 40, y: 18, z: -60}
   bounds: 1
-  minCameraPos: {x: -100, y: 45, z: -47}
-  maxCameraPos: {x: 2000, y: 120, z: 0}
+  minCameraPos: {x: -100, y: -105, z: -47}
+  maxCameraPos: {x: 2000, y: 280, z: 0}
 --- !u!1001 &151399211
 Prefab:
   m_ObjectHideFlags: 0
